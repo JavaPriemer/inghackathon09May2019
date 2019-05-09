@@ -61,6 +61,7 @@
 		</dependency>
 	</dependencies>
 
+	<distributionManagement>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

@@ -13,8 +13,13 @@ public class CommissionServiceImpl implements CommissionService {
 	CommissionRepository commissionRepo;
 	
 	@Override
-	public Double getCalculatedCommission(Long partyId, Long activityId, Long productId) {
+	public Double getCommission(Long partyId, Long activityId, Long productId) {
 		return commissionRepo.getCommission(productId, partyId, activityId);
+	}
+
+	@Override
+	public void updateProcessingStatus(Long partyId, Long activityCode, Long productCode) {
+		commissionRepo.updateProcessingStatus(partyId, activityCode, productCode);
 	}
 
 }

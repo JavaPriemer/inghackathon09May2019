@@ -16,6 +16,7 @@ import com.hcl.inghackathon.entities.Source;
 import com.hcl.inghackathon.entities.Transaction;
 import com.hcl.inghackathon.service.CommissionService;
 import com.hcl.inghackathon.service.PaymentApprovalServcice;
+import com.hcl.inghackathon.service.PaymentService;
 import com.hcl.inghackathon.service.SourceService;
 
 @RestController
@@ -27,6 +28,9 @@ public class DagobertController {
 
 	@Autowired
 	CommissionService commissionService;
+
+	@Autowired
+	PaymentService paymentService;
 	
 	@Autowired
 	PaymentApprovalServcice paymentservice;
@@ -39,11 +43,18 @@ public class DagobertController {
 	 * allPendingTransactions = sourceService.getAllPendingTransactions(partyId,
 	 * actualStatus); return allPendingTransactions; }
 	 */
+  
+  @GetMapping("/getActivityCount")
+	public ResponseEntity<List<?>> getActivityCount(@RequestParam("partyId") Long partyId,
+			@RequestParam("transactionStatus") String transactionStatus) {
+		List<?> allPendingTransactions = sourceService.getAllActivityCounts(partyId, transactionStatus);
+		return new ResponseEntity<List<?>>(allPendingTransactions, HttpStatus.OK);
+	}
 
 	@GetMapping("/getServicesProvided")
 	public ResponseEntity<List<?>> getServicesProvided(@RequestParam("partyId") Long partyId,
 			@RequestParam("transactionStatus") String transactionStatus) {
-		List<?> allPendingTransactions = sourceService.getAllPendingTransactions(partyId, transactionStatus);
+		List<?> allPendingTransactions = sourceService.getAllActivityCounts(partyId, transactionStatus);
 		return new ResponseEntity<List<?>>(allPendingTransactions, HttpStatus.OK);
 	}
 
@@ -53,24 +64,44 @@ public class DagobertController {
 	}
 
 	@GetMapping("/calculateCommission")
+	public ResponseEntity<Double> retrieveCommission(@RequestParam("partyId") Long partyId,
+			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productId) {
+		
+		Double calculatedCommission = 2.0+3.8;
+		Double commissionAmount = commissionService.getCommission(partyId, activityCode, productId);
+		System.out.println("commissionAmount: " + commissionAmount);
+		Integer activityCounts = sourceService.getActivityCount(productId, partyId, activityCode, "V");
+		System.out.println("activityCounts: " + activityCounts);
+
+		if (activityCounts != null && commissionAmount != null) {
+			calculatedCommission = activityCounts * commissionAmount;
+			commissionService.updateProcessingStatus(partyId, activityCode, productId);
+		}
+
+		return new ResponseEntity<Double>(calculatedCommission, HttpStatus.OK);
+  }
+
+	@GetMapping("/getCommission")
 	public Double calculateCommission(@RequestParam("partyId") Long partyId,
 			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productCode) {
-		Double calculatedCommission = commissionService.getCalculatedCommission(partyId, activityCode, productCode);
-		return calculatedCommission;
+		return commissionService.getCommission(partyId, activityCode, productCode);
 	}
 	
 	@GetMapping("/getPendingPayments")
 	public List<Transaction> getPaymentToApprove(@RequestParam("partyId") Long partyId) {
-		List<Transaction> approvedList = paymentservice.getPendingPayments(partyId);
-		return approvedList;
+		return paymentservice.getPendingPayments(partyId);
 	}
 	
 	@PostMapping("/approvePayment")
 	public boolean approvePayment(@RequestBody Transaction transaction) {
-		boolean status = paymentservice.approvePayments(transaction);
-		return status;
+		return paymentservice.approvePayments(transaction);
 	}
-	
-	
+
+	@PostMapping("/makePayment")
+	public ResponseEntity<String> makePayment(@RequestParam Long partyId, @RequestParam String approvalStatus,
+			@RequestParam String bankAcccount) {
+		String msg = paymentService.doPayment(partyId, approvalStatus, bankAcccount);
+		return new ResponseEntity<String>(msg, HttpStatus.OK);
+	}
 
 }
