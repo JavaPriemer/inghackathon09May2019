@@ -63,7 +63,7 @@ public class DagobertController {
 		return sourceService.getSuccessfulTransactions();
 	}
 
-	@GetMapping("/getCommission")
+	@GetMapping("/calculateCommission")
 	public ResponseEntity<Double> retrieveCommission(@RequestParam("partyId") Long partyId,
 			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productId) {
 		
@@ -81,7 +81,7 @@ public class DagobertController {
 		return new ResponseEntity<Double>(calculatedCommission, HttpStatus.OK);
   }
 
-	@GetMapping("/calculateCommission")
+	@GetMapping("/getCommission")
 	public Double calculateCommission(@RequestParam("partyId") Long partyId,
 			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productCode) {
 		return commissionService.getCommission(partyId, activityCode, productCode);
