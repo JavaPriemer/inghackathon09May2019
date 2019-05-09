@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hcl.inghackathon.entities.Transaction;
 
+
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 

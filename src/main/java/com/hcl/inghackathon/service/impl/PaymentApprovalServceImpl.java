@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hcl.inghackathon.entities.Transaction;
-import com.hcl.inghackathon.model.TransactionModel;
 import com.hcl.inghackathon.repository.TransactionRepository;
 import com.hcl.inghackathon.service.PaymentApprovalServcice;
 
