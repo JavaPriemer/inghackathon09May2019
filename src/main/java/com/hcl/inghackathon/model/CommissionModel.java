@@ -2,28 +2,28 @@ package com.hcl.inghackathon.model;
 
 public class CommissionModel {
 
-	private Long providerId;
+	private Long partyId;
 	private Long productCode;
 	private Long activityId;
 	private Double commission;
-	
+
 	public CommissionModel() {
 	}
 
-	public CommissionModel(Long providerId, Long productCode, Long activityId, Double commission) {
+	public CommissionModel(Long partyId, Long productCode, Long activityId, Double commission) {
 		super();
-		this.providerId = providerId;
+		this.partyId = partyId;
 		this.productCode = productCode;
 		this.activityId = activityId;
 		this.commission = commission;
 	}
 
-	public Long getProviderId() {
-		return providerId;
+	public Long getPartyId() {
+		return partyId;
 	}
 
-	public void setProviderId(Long providerId) {
-		this.providerId = providerId;
+	public void setPartyId(Long partyId) {
+		this.partyId = partyId;
 	}
 
 	public Long getProductCode() {
@@ -52,8 +52,8 @@ public class CommissionModel {
 
 	@Override
 	public String toString() {
-		return "CommissionModel [providerId=" + providerId + ", productCode=" + productCode + ", activityId="
-				+ activityId + ", commission=" + commission + "]";
+		return "CommissionModel [partyId=" + partyId + ", productCode=" + productCode + ", activityId=" + activityId
+				+ ", commission=" + commission + "]";
 	}
 
 }

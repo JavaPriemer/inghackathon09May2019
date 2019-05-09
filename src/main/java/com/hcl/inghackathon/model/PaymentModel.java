@@ -2,66 +2,46 @@ package com.hcl.inghackathon.model;
 
 public class PaymentModel {
 
-	private Integer paymentId;
-
-	private String provider;
-	private String vendor;
-	private Integer amountToBePaid;
-	private String status;
+	private Long paymentId;
+	private Long partyId;
+	private String paymentStatus;
 	private String bankAccount;
+	private Integer amountPaid;
 
 	public PaymentModel() {
 	}
 
-	public PaymentModel(Integer paymentId, String provider, String vendor, Integer amountToBePaid, String status,
-			String bankAccount) {
+	public PaymentModel(Long paymentId, Long partyId, String paymentStatus, String bankAccount, Integer amountPaid) {
 		super();
 		this.paymentId = paymentId;
-		this.provider = provider;
-		this.vendor = vendor;
-		this.amountToBePaid = amountToBePaid;
-		this.status = status;
+		this.partyId = partyId;
+		this.paymentStatus = paymentStatus;
 		this.bankAccount = bankAccount;
+		this.amountPaid = amountPaid;
 	}
 
-	public Integer getPaymentId() {
+	public Long getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(Integer paymentId) {
+	public void setPaymentId(Long paymentId) {
 		this.paymentId = paymentId;
 	}
 
-	public String getProvider() {
-		return provider;
+	public Long getPartyId() {
+		return partyId;
 	}
 
-	public void setProvider(String provider) {
-		this.provider = provider;
+	public void setPartyId(Long partyId) {
+		this.partyId = partyId;
 	}
 
-	public String getVendor() {
-		return vendor;
+	public String getPaymentStatus() {
+		return paymentStatus;
 	}
 
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
-	}
-
-	public Integer getAmountToBePaid() {
-		return amountToBePaid;
-	}
-
-	public void setAmountToBePaid(Integer amountToBePaid) {
-		this.amountToBePaid = amountToBePaid;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 
 	public String getBankAccount() {
@@ -72,10 +52,18 @@ public class PaymentModel {
 		this.bankAccount = bankAccount;
 	}
 
+	public Integer getAmountPaid() {
+		return amountPaid;
+	}
+
+	public void setAmountPaid(Integer amountPaid) {
+		this.amountPaid = amountPaid;
+	}
+
 	@Override
 	public String toString() {
-		return "PaymentModel [paymentId=" + paymentId + ", provider=" + provider + ", vendor=" + vendor
-				+ ", amountToBePaid=" + amountToBePaid + ", status=" + status + ", bankAccount=" + bankAccount + "]";
+		return "PaymentModel [paymentId=" + paymentId + ", partyId=" + partyId + ", paymentStatus=" + paymentStatus
+				+ ", bankAccount=" + bankAccount + ", amountPaid=" + amountPaid + "]";
 	}
 
 }

@@ -3,21 +3,19 @@ package com.hcl.inghackathon.model;
 public class TransactionModel {
 
 	private Long transactionId;
-	private String vendor;
-	private String provider;
+	private String partyId;
 	private Long transactionCount;
-	private Integer amountToBePaid;
+	private Double amountToBePaid;
 	private String approvalStatus;
 
 	public TransactionModel() {
 	}
 
-	public TransactionModel(Long transactionId, String vendor, String provider, Long transactionCount,
-			Integer amountToBePaid, String approvalStatus) {
+	public TransactionModel(Long transactionId, String partyId, Long transactionCount, Double amountToBePaid,
+			String approvalStatus) {
 		super();
 		this.transactionId = transactionId;
-		this.vendor = vendor;
-		this.provider = provider;
+		this.partyId = partyId;
 		this.transactionCount = transactionCount;
 		this.amountToBePaid = amountToBePaid;
 		this.approvalStatus = approvalStatus;
@@ -31,20 +29,12 @@ public class TransactionModel {
 		this.transactionId = transactionId;
 	}
 
-	public String getVendor() {
-		return vendor;
+	public String getPartyId() {
+		return partyId;
 	}
 
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
-	}
-
-	public String getProvider() {
-		return provider;
-	}
-
-	public void setProvider(String provider) {
-		this.provider = provider;
+	public void setPartyId(String partyId) {
+		this.partyId = partyId;
 	}
 
 	public Long getTransactionCount() {
@@ -55,11 +45,11 @@ public class TransactionModel {
 		this.transactionCount = transactionCount;
 	}
 
-	public Integer getAmountToBePaid() {
+	public Double getAmountToBePaid() {
 		return amountToBePaid;
 	}
 
-	public void setAmountToBePaid(Integer amountToBePaid) {
+	public void setAmountToBePaid(Double amountToBePaid) {
 		this.amountToBePaid = amountToBePaid;
 	}
 
@@ -73,9 +63,8 @@ public class TransactionModel {
 
 	@Override
 	public String toString() {
-		return "TransactionModel [transactionId=" + transactionId + ", vendor=" + vendor + ", provider=" + provider
-				+ ", transactionCount=" + transactionCount + ", amountToBePaid=" + amountToBePaid + ", approvalStatus="
-				+ approvalStatus + "]";
+		return "TransactionModel [transactionId=" + transactionId + ", partyId=" + partyId + ", transactionCount="
+				+ transactionCount + ", amountToBePaid=" + amountToBePaid + ", approvalStatus=" + approvalStatus + "]";
 	}
 
 }
