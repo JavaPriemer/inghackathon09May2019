@@ -55,7 +55,7 @@ public class DagobertController {
 	@GetMapping("/calculateCommission")
 	public Double calculateCommission(@RequestParam("partyId") Long partyId,
 			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productCode) {
-		return commissionService.getCalculatedCommission(partyId, activityCode, productCode);;
+		return commissionService.getCalculatedCommission(partyId, activityCode, productCode);
 	}
 	
 	@GetMapping("/getPendingPayments")
