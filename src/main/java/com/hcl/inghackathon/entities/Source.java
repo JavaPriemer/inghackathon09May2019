@@ -28,7 +28,7 @@ public class Source {
 	private Long activityCode;
 
 	@Column(name = "transaction_status")
-	private Integer transactionStatus;
+	private String transactionStatus;
 
 	@Column(name = "processing_status")
 	private String processingStatus;
@@ -36,7 +36,7 @@ public class Source {
 	public Source() {
 	}
 
-	public Source(Long partyId, Date transactionDate, Long productCode, Long activityCode, Integer transactionStatus,
+	public Source(Long partyId, Date transactionDate, Long productCode, Long activityCode, String transactionStatus,
 			String processingStatus) {
 		super();
 		this.partyId = partyId;
@@ -79,11 +79,11 @@ public class Source {
 		this.activityCode = activityCode;
 	}
 
-	public Integer getTransactionStatus() {
+	public String getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(Integer transactionStatus) {
+	public void setTransactionStatus(String transactionStatus) {
 		this.transactionStatus = transactionStatus;
 	}
 

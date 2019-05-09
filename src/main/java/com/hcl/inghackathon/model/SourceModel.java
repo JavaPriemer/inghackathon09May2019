@@ -8,23 +8,21 @@ public class SourceModel {
 	private Date transactionDate;
 	private Long productCode;
 	private Long activityCode;
-	private Integer transactionStatus;
-	private String provider;
-	private Integer actualStatus;
+	private String transactionStatus;
+	private String processingStatus;
 
 	public SourceModel() {
 	}
 
 	public SourceModel(Long partyId, Date transactionDate, Long productCode, Long activityCode,
-			Integer transactionStatus, String provider, Integer actualStatus) {
+			String transactionStatus, String processingStatus) {
 		super();
 		this.partyId = partyId;
 		this.transactionDate = transactionDate;
 		this.productCode = productCode;
 		this.activityCode = activityCode;
 		this.transactionStatus = transactionStatus;
-		this.provider = provider;
-		this.actualStatus = actualStatus;
+		this.processingStatus = processingStatus;
 	}
 
 	public Long getPartyId() {
@@ -59,35 +57,27 @@ public class SourceModel {
 		this.activityCode = activityCode;
 	}
 
-	public Integer getTransactionStatus() {
+	public String getTransactionStatus() {
 		return transactionStatus;
 	}
 
-	public void setTransactionStatus(Integer transactionStatus) {
+	public void setTransactionStatus(String transactionStatus) {
 		this.transactionStatus = transactionStatus;
 	}
 
-	public String getProvider() {
-		return provider;
+	public String getProcessingStatus() {
+		return processingStatus;
 	}
 
-	public void setProvider(String provider) {
-		this.provider = provider;
-	}
-
-	public Integer getActualStatus() {
-		return actualStatus;
-	}
-
-	public void setActualStatus(Integer actualStatus) {
-		this.actualStatus = actualStatus;
+	public void setProcessingStatus(String processingStatus) {
+		this.processingStatus = processingStatus;
 	}
 
 	@Override
 	public String toString() {
 		return "SourceModel [partyId=" + partyId + ", transactionDate=" + transactionDate + ", productCode="
 				+ productCode + ", activityCode=" + activityCode + ", transactionStatus=" + transactionStatus
-				+ ", provider=" + provider + ", actualStatus=" + actualStatus + "]";
+				+ ", processingStatus=" + processingStatus + "]";
 	}
 
 }
