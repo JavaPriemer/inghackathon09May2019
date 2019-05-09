@@ -61,17 +61,12 @@
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework.cloud</groupId>
-				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+	<distributionManagement>
+  <snapshotRepository>
+    <id>nexus</id>
+    <url>http://13.233.230.17:8081/nexus/content/repositories/1/</url>
+  </snapshotRepository>
+</distributionManagement>
 
 	<build>
 		<plugins>
