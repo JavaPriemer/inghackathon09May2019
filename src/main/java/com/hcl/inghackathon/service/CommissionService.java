@@ -7,4 +7,6 @@ public interface CommissionService {
 
 	Double getCommission(Long partyId, Long activityCode, Long productCode);
 
+	void updateProcessingStatus(Long partyId, Long activityCode, Long productCode);
+
 }

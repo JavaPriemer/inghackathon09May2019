@@ -14,4 +14,8 @@ public interface CommissionRepository extends JpaRepository<Commission, Long> {
 	public Double getCommission(@Param("product") Long productId, @Param("party") Long partyId,
 			@Param("activity") Long activityId);
 
+	@Query(value = "update source set processing_status = 'processed' where party_id = :party and activity_code = :activity and product_code = :product and transaction_status = 'V'", nativeQuery = true)
+	public void updateProcessingStatus(@Param("party") Long partyId, @Param("activity") Long activityCode,
+			@Param("product") Long productCode);
+
 }

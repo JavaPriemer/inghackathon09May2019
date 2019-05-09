@@ -11,7 +11,7 @@ public interface SourceService {
 
 	public List<?> getAllActivityCounts(Long partyId, String transactionStatus);
 	
-	public Integer getActivityCount(Long productId, String party, String activity, Integer actualStatus);
+	public Integer getActivityCount(Long productId, Long party, Long activity, String transactionStatus);
 	
 	public List<Source> getSuccessfulTransactions();
 	

@@ -17,4 +17,9 @@ public class CommissionServiceImpl implements CommissionService {
 		return commissionRepo.getCommission(productId, partyId, activityId);
 	}
 
+	@Override
+	public void updateProcessingStatus(Long partyId, Long activityCode, Long productCode) {
+		commissionRepo.updateProcessingStatus(partyId, activityCode, productCode);
+	}
+
 }

@@ -43,9 +43,18 @@ public class DagobertController {
 
 	@GetMapping("/getCommission")
 	public Double retrieveCommission(@RequestParam("partyId") Long partyId,
-			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productCode) {
-		Double calculatedCommission = commissionService.getCommission(partyId, activityCode, productCode);
+			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productId,
+			@RequestParam("transactionStatus") String transactionStatus) {
+		
+		Double calculatedCommission = 1.0;
+		Double commissionAmount = commissionService.getCommission(partyId, activityCode, productId);
+		Integer activityCounts = sourceService.getActivityCount(productId, partyId, activityCode, "V");
 
+		if (activityCounts != null && commissionAmount != null) {
+			calculatedCommission = activityCounts * commissionAmount;
+			commissionService.updateProcessingStatus(partyId, activityCode, productId);
+		}
+		
 		return calculatedCommission;
 	}
 

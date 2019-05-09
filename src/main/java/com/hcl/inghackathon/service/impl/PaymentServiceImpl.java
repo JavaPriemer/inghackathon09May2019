@@ -1,6 +1,7 @@
 package com.hcl.inghackathon.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.hcl.inghackathon.entities.Payment;
 import com.hcl.inghackathon.entities.Transaction;
@@ -8,6 +9,7 @@ import com.hcl.inghackathon.repository.PaymentRepository;
 import com.hcl.inghackathon.service.PaymentService;
 import com.hcl.inghackathon.service.TransactionService;
 
+@Service
 public class PaymentServiceImpl implements PaymentService {
 
 	@Autowired
