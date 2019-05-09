@@ -5,6 +5,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CommissionService {
 
-	Double getCalculatedCommission(Long partyId, Long activityCode, Long productCode);
+	Double getCommission(Long partyId, Long activityCode, Long productCode);
 
 }

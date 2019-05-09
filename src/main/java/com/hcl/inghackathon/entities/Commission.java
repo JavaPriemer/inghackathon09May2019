@@ -1,5 +1,7 @@
 package com.hcl.inghackathon.entities;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,17 +23,16 @@ public class Commission {
 
 	@Column(name = "activity_id")
 	private Long activityId;
+	
+	@Column(name = "start_date")
+	private Date startDate;
+	
+	@Column(name = "end_date")
+	private Date endDate;
+	
 	private Double commission;
 
 	public Commission() {
-	}
-
-	public Commission(Long partyId, Long productCode, Long activityId, Double commission) {
-		super();
-		this.partyId = partyId;
-		this.productCode = productCode;
-		this.activityId = activityId;
-		this.commission = commission;
 	}
 
 	public Long getPartyId() {
@@ -58,6 +59,22 @@ public class Commission {
 		this.activityId = activityId;
 	}
 
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 	public Double getCommission() {
 		return commission;
 	}
@@ -69,7 +86,7 @@ public class Commission {
 	@Override
 	public String toString() {
 		return "Commission [partyId=" + partyId + ", productCode=" + productCode + ", activityId=" + activityId
-				+ ", commission=" + commission + "]";
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", commission=" + commission + "]";
 	}
 	
 }

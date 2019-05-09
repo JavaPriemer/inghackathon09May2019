@@ -26,12 +26,12 @@ public class Payment {
 	private String bankAccount;
 
 	@Column(name = "amount_paid")
-	private Integer amountPaid;
+	private Double amountPaid;
 
 	public Payment() {
 	}
 
-	public Payment(Long paymentId, Long partyId, String paymentStatus, String bankAccount, Integer amountPaid) {
+	public Payment(Long paymentId, Long partyId, String paymentStatus, String bankAccount, Double amountPaid) {
 		super();
 		this.paymentId = paymentId;
 		this.partyId = partyId;
@@ -72,11 +72,11 @@ public class Payment {
 		this.bankAccount = bankAccount;
 	}
 
-	public Integer getAmountPaid() {
+	public Double getAmountPaid() {
 		return amountPaid;
 	}
 
-	public void setAmountPaid(Integer amountPaid) {
+	public void setAmountPaid(Double amountPaid) {
 		this.amountPaid = amountPaid;
 	}
 

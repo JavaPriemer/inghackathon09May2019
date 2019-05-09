@@ -8,4 +8,6 @@ import com.hcl.inghackathon.entities.Transaction;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
+	Transaction findByPartyIdAndApprovalStatus(Long partyId, String approvalStatus);
+	
 }

@@ -1,21 +1,17 @@
 package com.hcl.inghackathon.model;
 
+import java.util.Date;
+
 public class CommissionModel {
 
 	private Long partyId;
 	private Long productCode;
 	private Long activityId;
+	private Date startDate;
+	private Date endDate;
 	private Double commission;
 
 	public CommissionModel() {
-	}
-
-	public CommissionModel(Long partyId, Long productCode, Long activityId, Double commission) {
-		super();
-		this.partyId = partyId;
-		this.productCode = productCode;
-		this.activityId = activityId;
-		this.commission = commission;
 	}
 
 	public Long getPartyId() {
@@ -42,6 +38,22 @@ public class CommissionModel {
 		this.activityId = activityId;
 	}
 
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
 	public Double getCommission() {
 		return commission;
 	}
@@ -53,7 +65,7 @@ public class CommissionModel {
 	@Override
 	public String toString() {
 		return "CommissionModel [partyId=" + partyId + ", productCode=" + productCode + ", activityId=" + activityId
-				+ ", commission=" + commission + "]";
+				+ ", startDate=" + startDate + ", endDate=" + endDate + ", commission=" + commission + "]";
 	}
 
 }

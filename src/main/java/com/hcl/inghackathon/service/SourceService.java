@@ -9,7 +9,7 @@ import com.hcl.inghackathon.entities.Source;
 @Service
 public interface SourceService {
 
-	public List<?> getAllPendingTransactions(Long partyId, String transactionStatus);
+	public List<?> getAllActivityCounts(Long partyId, String transactionStatus);
 	
 	public Integer getActivityCount(Long productId, String party, String activity, Integer actualStatus);
 	

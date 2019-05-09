@@ -17,7 +17,7 @@ public class Transaction {
 	private Long transactionId;
 
 	@Column(name = "party_id")
-	private String partyId;
+	private Long partyId;
 
 	@Column(name = "transaction_count")
 	private Long transactionCount;
@@ -31,7 +31,7 @@ public class Transaction {
 	public Transaction() {
 	}
 
-	public Transaction(Long transactionId, String partyId, Long transactionCount, Double amountToBePaid,
+	public Transaction(Long transactionId, Long partyId, Long transactionCount, Double amountToBePaid,
 			String approvalStatus) {
 		super();
 		this.transactionId = transactionId;
@@ -49,11 +49,11 @@ public class Transaction {
 		this.transactionId = transactionId;
 	}
 
-	public String getPartyId() {
+	public Long getPartyId() {
 		return partyId;
 	}
 
-	public void setPartyId(String partyId) {
+	public void setPartyId(Long partyId) {
 		this.partyId = partyId;
 	}
 
