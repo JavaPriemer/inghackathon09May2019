@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.inghackathon.entities.Source;
+import com.hcl.inghackathon.model.Response;
 import com.hcl.inghackathon.service.CommissionService;
 import com.hcl.inghackathon.service.SourceService;
 
@@ -36,7 +37,7 @@ public class DagobertController {
 	@GetMapping("/getServicesProvided")
 	public ResponseEntity<List<?>> getServicesProvided(@RequestParam("partyId") Long partyId,
 			@RequestParam("transactionStatus") String transactionStatus) {
-		List<?> allPendingTransactions = sourceService.getAllPendingTransactions();
+		List<?> allPendingTransactions = sourceService.getAllPendingTransactions(partyId, transactionStatus);
 		return new ResponseEntity<List<?>>(allPendingTransactions, HttpStatus.OK);
 	}
 
