@@ -16,12 +16,13 @@ public class SourceServiceImpl implements SourceService {
 	SourceRepository sourceRepo;
 
 	@Override
-	public List<?> getAllPendingTransactions(Long partyId, String transactionStatus) {
-		return sourceRepo.getListOfServiceTransactions(partyId, transactionStatus);
+	public List<?> getAllActivityCounts(Long partyId, String transactionStatus) {
+		return sourceRepo.getListOfActivityCount(partyId, transactionStatus);
 	}
 
-	public Integer getActivityCount(Long productId, String party, String activity, Integer actualStatus) {
-		return sourceRepo.getActivityCount(productId, party, activity, actualStatus);
+	@Override
+	public Integer getActivityCount(Long productId, Long party, Long activity, String transactionStatus) {
+		return sourceRepo.getActivityCount(productId, party, activity, transactionStatus);
 	}
 
 	@Override
