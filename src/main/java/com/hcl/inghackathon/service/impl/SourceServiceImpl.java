@@ -14,14 +14,19 @@ public class SourceServiceImpl implements SourceService {
 
 	@Autowired
 	SourceRepository sourceRepo;
-	
+
 	@Override
-	public List<Source> getAllPendingTransactions(Long partyId, Integer actualStatus) {
-		return sourceRepo.getListOfServiceTransactions(partyId, actualStatus);
+	public List<?> getAllPendingTransactions(Long partyId, String transactionStatus) {
+		return sourceRepo.getListOfServiceTransactions(partyId, transactionStatus);
 	}
-	
+
 	public Integer getActivityCount(Long productId, String party, String activity, Integer actualStatus) {
 		return sourceRepo.getActivityCount(productId, party, activity, actualStatus);
+	}
+
+	@Override
+	public List<Source> getSuccessfulTransactions() {
+		return sourceRepo.findByTransactionStatus();
 	}
 
 }

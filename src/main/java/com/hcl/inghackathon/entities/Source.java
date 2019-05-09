@@ -15,6 +15,8 @@ public class Source {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+
 	@Column(name = "party_id")
 	private Long partyId;
 
@@ -98,7 +100,8 @@ public class Source {
 	@Override
 	public String toString() {
 		return "Source [partyId=" + partyId + ", transactionDate=" + transactionDate + ", productCode=" + productCode
-				+ ", activityCode=" + activityCode + ", transactionStatus=" + transactionStatus + ", processingStatus=" + processingStatus + "]";
+				+ ", activityCode=" + activityCode + ", transactionStatus=" + transactionStatus + ", processingStatus="
+				+ processingStatus + "]";
 	}
 
 }
