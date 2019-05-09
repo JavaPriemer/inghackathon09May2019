@@ -16,8 +16,8 @@ public class SourceServiceImpl implements SourceService {
 	SourceRepository sourceRepo;
 
 	@Override
-	public List<?> getAllPendingTransactions() {
-		return sourceRepo.getListOfServiceTransactions();
+	public List<?> getAllPendingTransactions(Long partyId, String transactionStatus) {
+		return sourceRepo.getListOfServiceTransactions(partyId, transactionStatus);
 	}
 
 	public Integer getActivityCount(Long productId, String party, String activity, Integer actualStatus) {

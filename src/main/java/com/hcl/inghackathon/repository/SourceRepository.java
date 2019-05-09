@@ -12,8 +12,9 @@ import com.hcl.inghackathon.entities.Source;
 @Repository
 public interface SourceRepository extends JpaRepository<Source, Long> {
 
-	@Query(value = "select party_id, product_code, activity_code from source ", nativeQuery = true)
-	public List<?> getListOfServiceTransactions();
+	@Query(value = "select party_id, product_code, activity_code, count(transaction_status) as transaction_count from source where party_id = :party and transaction_status = :transaction group by party_id, product_code, activity_code", nativeQuery = true)
+	public List<?> getListOfServiceTransactions(@Param("party") Long partyId,
+			@Param("transaction") String transactionStatus);
 
 	@Query(value = "select count(*) from source " + "where product_id = :product " + "and party = :party "
 			+ "and  activity = :activity " + "and actual_status = :status;", nativeQuery = true)
