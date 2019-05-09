@@ -14,7 +14,7 @@ import com.hcl.inghackathon.entities.Transaction;
 public interface TransactionRepository extends JpaRepository<Transaction, Long> {
 
 	@Query(value = "select transaction_id, party_id, amount_to_be_paid, approval_status  from transaction "
-			+ "where approval_status not in ('approved')" + "and party_id = :partyId", nativeQuery = true)
+			+ "where approval_status = 'new' " + "and party_id = :partyId", nativeQuery = true)
 	public List<Transaction> getOfUnapprovedTransactions(@Param("partyId") Long party_id);
 
 }
