@@ -7,22 +7,16 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.RequestBody;
-
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hcl.inghackathon.entities.Source;
-
-import com.hcl.inghackathon.service.CommissionService;
-import com.hcl.inghackathon.service.PaymentService;
-
 import com.hcl.inghackathon.entities.Transaction;
 import com.hcl.inghackathon.service.CommissionService;
 import com.hcl.inghackathon.service.PaymentApprovalServcice;
-
+import com.hcl.inghackathon.service.PaymentService;
 import com.hcl.inghackathon.service.SourceService;
 
 @RestController
@@ -70,25 +64,27 @@ public class DagobertController {
 	}
 
 	@GetMapping("/getCommission")
-	public Double retrieveCommission(@RequestParam("partyId") Long partyId,
-			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productId,
-			@RequestParam("transactionStatus") String transactionStatus) {
+	public ResponseEntity<Double> retrieveCommission(@RequestParam("partyId") Long partyId,
+			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productId) {
 		
-		Double calculatedCommission = 1.0;
+		Double calculatedCommission = 2.0+3.8;
 		Double commissionAmount = commissionService.getCommission(partyId, activityCode, productId);
+		System.out.println("commissionAmount: " + commissionAmount);
 		Integer activityCounts = sourceService.getActivityCount(productId, partyId, activityCode, "V");
+		System.out.println("activityCounts: " + activityCounts);
 
 		if (activityCounts != null && commissionAmount != null) {
 			calculatedCommission = activityCounts * commissionAmount;
 			commissionService.updateProcessingStatus(partyId, activityCode, productId);
 		}
-		return calculatedCommission;
+
+		return new ResponseEntity<Double>(calculatedCommission, HttpStatus.OK);
   }
 
 	@GetMapping("/calculateCommission")
 	public Double calculateCommission(@RequestParam("partyId") Long partyId,
 			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productCode) {
-		return commissionService.getCalculatedCommission(partyId, activityCode, productCode);
+		return commissionService.getCommission(partyId, activityCode, productCode);
 	}
 	
 	@GetMapping("/getPendingPayments")
