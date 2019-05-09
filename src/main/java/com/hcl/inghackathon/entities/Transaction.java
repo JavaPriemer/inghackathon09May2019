@@ -16,9 +16,8 @@ public class Transaction {
 	@Column(name = "transaction_id")
 	private Long transactionId;
 
-	private String vendor;
-
-	private String provider;
+	@Column(name = "party_id")
+	private String partyId;
 
 	@Column(name = "transaction_count")
 	private Long transactionCount;
@@ -28,16 +27,15 @@ public class Transaction {
 
 	@Column(name = "approval_status")
 	private String approvalStatus;
-
+	
 	public Transaction() {
 	}
 
-	public Transaction(Long transactionId, String vendor, String provider, Long transactionCount, Double amountToBePaid,
+	public Transaction(Long transactionId, String partyId, Long transactionCount, Double amountToBePaid,
 			String approvalStatus) {
 		super();
 		this.transactionId = transactionId;
-		this.vendor = vendor;
-		this.provider = provider;
+		this.partyId = partyId;
 		this.transactionCount = transactionCount;
 		this.amountToBePaid = amountToBePaid;
 		this.approvalStatus = approvalStatus;
@@ -51,20 +49,12 @@ public class Transaction {
 		this.transactionId = transactionId;
 	}
 
-	public String getVendor() {
-		return vendor;
+	public String getPartyId() {
+		return partyId;
 	}
 
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
-	}
-
-	public String getProvider() {
-		return provider;
-	}
-
-	public void setProvider(String provider) {
-		this.provider = provider;
+	public void setPartyId(String partyId) {
+		this.partyId = partyId;
 	}
 
 	public Long getTransactionCount() {
@@ -93,9 +83,8 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "TableTwo [transactionId=" + transactionId + ", vendor=" + vendor + ", provider=" + provider
-				+ ", transactionCount=" + transactionCount + ", amountToBePaid=" + amountToBePaid + ", approvalStatus="
-				+ approvalStatus + "]";
+		return "Transaction [transactionId=" + transactionId + ", partyId=" + partyId + ", transactionCount="
+				+ transactionCount + ", amountToBePaid=" + amountToBePaid + ", approvalStatus=" + approvalStatus + "]";
 	}
-
+	
 }

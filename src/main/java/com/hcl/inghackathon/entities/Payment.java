@@ -14,62 +14,54 @@ public class Payment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "payment_id")
-	private Integer paymentId;
-	
-	private String provider;
+	private Long paymentId;
 
-	private String vendor;
+	@Column(name = "party_id")
+	private Long partyId;
 
-	@Column(name = "amount_to_be_paid")
-	private Integer amountToBePaid;
-
-	private String status;
+	@Column(name = "payment_status")
+	private String paymentStatus;
 
 	@Column(name = "bank_account")
 	private String bankAccount;
 
+	@Column(name = "amount_paid")
+	private Integer amountPaid;
+
 	public Payment() {
 	}
 
-	public Payment(String provider, String vendor, Integer amountToBePaid, String status, String bankAccount) {
+	public Payment(Long paymentId, Long partyId, String paymentStatus, String bankAccount, Integer amountPaid) {
 		super();
-		this.provider = provider;
-		this.vendor = vendor;
-		this.amountToBePaid = amountToBePaid;
-		this.status = status;
+		this.paymentId = paymentId;
+		this.partyId = partyId;
+		this.paymentStatus = paymentStatus;
 		this.bankAccount = bankAccount;
+		this.amountPaid = amountPaid;
 	}
 
-	public String getProvider() {
-		return provider;
+	public Long getPaymentId() {
+		return paymentId;
 	}
 
-	public void setProvider(String provider) {
-		this.provider = provider;
+	public void setPaymentId(Long paymentId) {
+		this.paymentId = paymentId;
 	}
 
-	public String getVendor() {
-		return vendor;
+	public Long getPartyId() {
+		return partyId;
 	}
 
-	public void setVendor(String vendor) {
-		this.vendor = vendor;
+	public void setPartyId(Long partyId) {
+		this.partyId = partyId;
 	}
 
-	public Integer getAmountToBePaid() {
-		return amountToBePaid;
+	public String getPaymentStatus() {
+		return paymentStatus;
 	}
 
-	public void setAmountToBePaid(Integer amountToBePaid) {
-		this.amountToBePaid = amountToBePaid;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
+	public void setPaymentStatus(String paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 
 	public String getBankAccount() {
@@ -80,10 +72,18 @@ public class Payment {
 		this.bankAccount = bankAccount;
 	}
 
+	public Integer getAmountPaid() {
+		return amountPaid;
+	}
+
+	public void setAmountPaid(Integer amountPaid) {
+		this.amountPaid = amountPaid;
+	}
+
 	@Override
 	public String toString() {
-		return "TableThree [provider=" + provider + ", vendor=" + vendor + ", amountToBePaid=" + amountToBePaid
-				+ ", status=" + status + ", bankAccount=" + bankAccount + "]";
+		return "Payment [paymentId=" + paymentId + ", partyId=" + partyId + ", paymentStatus=" + paymentStatus
+				+ ", bankAccount=" + bankAccount + ", amountPaid=" + amountPaid + "]";
 	}
 
 }

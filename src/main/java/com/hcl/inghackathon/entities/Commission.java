@@ -13,8 +13,8 @@ public class Commission {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "provider_id")
-	private Long providerId;
+	@Column(name = "party_id")
+	private Long partyId;
 
 	@Column(name = "product_code")
 	private Long productCode;
@@ -26,20 +26,20 @@ public class Commission {
 	public Commission() {
 	}
 
-	public Commission(Long providerId, Long productCode, Long activityId, Double commission) {
+	public Commission(Long partyId, Long productCode, Long activityId, Double commission) {
 		super();
-		this.providerId = providerId;
+		this.partyId = partyId;
 		this.productCode = productCode;
 		this.activityId = activityId;
 		this.commission = commission;
 	}
 
-	public Long getProviderId() {
-		return providerId;
+	public Long getPartyId() {
+		return partyId;
 	}
 
-	public void setProviderId(Long providerId) {
-		this.providerId = providerId;
+	public void setPartyId(Long partyId) {
+		this.partyId = partyId;
 	}
 
 	public Long getProductCode() {
@@ -50,11 +50,11 @@ public class Commission {
 		this.productCode = productCode;
 	}
 
-	public Long getActivity() {
+	public Long getActivityId() {
 		return activityId;
 	}
 
-	public void setActivity(Long activityId) {
+	public void setActivityId(Long activityId) {
 		this.activityId = activityId;
 	}
 
@@ -68,8 +68,8 @@ public class Commission {
 
 	@Override
 	public String toString() {
-		return "TableFour [providerId=" + providerId + ", productCode=" + productCode + ", activityId=" + activityId
+		return "Commission [partyId=" + partyId + ", productCode=" + productCode + ", activityId=" + activityId
 				+ ", commission=" + commission + "]";
 	}
-
+	
 }

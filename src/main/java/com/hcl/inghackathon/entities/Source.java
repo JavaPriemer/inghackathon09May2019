@@ -29,29 +29,22 @@ public class Source {
 
 	@Column(name = "transaction_status")
 	private Integer transactionStatus;
-	
-	private String provider;
 
-	@Column(name = "actual_status")
-	private String actualStatus;
-	
-	@Column(name = "payment_status")
-	private String paymentStatus;
+	@Column(name = "processing_status")
+	private String processingStatus;
 
 	public Source() {
 	}
 
 	public Source(Long partyId, Date transactionDate, Long productCode, Long activityCode, Integer transactionStatus,
-			String provider, String actualStatus, String paymentStatus) {
+			String processingStatus) {
 		super();
 		this.partyId = partyId;
 		this.transactionDate = transactionDate;
 		this.productCode = productCode;
 		this.activityCode = activityCode;
 		this.transactionStatus = transactionStatus;
-		this.provider = provider;
-		this.actualStatus = actualStatus;
-		this.paymentStatus = paymentStatus;
+		this.processingStatus = processingStatus;
 	}
 
 	public Long getPartyId() {
@@ -94,35 +87,18 @@ public class Source {
 		this.transactionStatus = transactionStatus;
 	}
 
-	public String getProvider() {
-		return provider;
+	public String getProcessingStatus() {
+		return processingStatus;
 	}
 
-	public void setProvider(String provider) {
-		this.provider = provider;
-	}
-
-	public String getActualStatus() {
-		return actualStatus;
-	}
-
-	public void setActualStatus(String actualStatus) {
-		this.actualStatus = actualStatus;
-	}
-
-	public String getPaymentStatus() {
-		return paymentStatus;
-	}
-
-	public void setPaymentStatus(String paymentStatus) {
-		this.paymentStatus = paymentStatus;
+	public void setProcessingStatus(String processingStatus) {
+		this.processingStatus = processingStatus;
 	}
 
 	@Override
 	public String toString() {
 		return "Source [partyId=" + partyId + ", transactionDate=" + transactionDate + ", productCode=" + productCode
-				+ ", activityCode=" + activityCode + ", transactionStatus=" + transactionStatus + ", provider="
-				+ provider + ", actualStatus=" + actualStatus + ", paymentStatus=" + paymentStatus + "]";
+				+ ", activityCode=" + activityCode + ", transactionStatus=" + transactionStatus + ", processingStatus=" + processingStatus + "]";
 	}
 
 }
