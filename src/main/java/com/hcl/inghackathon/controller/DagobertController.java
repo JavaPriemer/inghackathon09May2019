@@ -55,20 +55,17 @@ public class DagobertController {
 	@GetMapping("/calculateCommission")
 	public Double calculateCommission(@RequestParam("partyId") Long partyId,
 			@RequestParam("activityCode") Long activityCode, @RequestParam("productCode") Long productCode) {
-		Double calculatedCommission = commissionService.getCalculatedCommission(partyId, activityCode, productCode);
-		return calculatedCommission;
+		return commissionService.getCalculatedCommission(partyId, activityCode, productCode);;
 	}
 	
 	@GetMapping("/getPendingPayments")
 	public List<Transaction> getPaymentToApprove(@RequestParam("partyId") Long partyId) {
-		List<Transaction> approvedList = paymentservice.getPendingPayments(partyId);
-		return approvedList;
+		return paymentservice.getPendingPayments(partyId);
 	}
 	
 	@PostMapping("/approvePayment")
 	public boolean approvePayment(@RequestBody Transaction transaction) {
-		boolean status = paymentservice.approvePayments(transaction);
-		return status;
+		return paymentservice.approvePayments(transaction);
 	}
 	
 	
